@@ -32,7 +32,7 @@ datagen = ImageDataGenerator(
 )
 
 train_generator = datagen.flow_from_directory(
-    'AnadromSmall',
+    'cleaned_data',
     target_size=(224, 224),
     batch_size=32,
     class_mode='binary',
@@ -40,7 +40,7 @@ train_generator = datagen.flow_from_directory(
 )
 
 val_generator = datagen.flow_from_directory(
-    'AnadromSmall',
+    'cleaned_data',
     target_size=(224, 224),
     batch_size=32,
     class_mode='binary',
@@ -62,4 +62,4 @@ model.compile(optimizer=tf.keras.optimizers.Adam(1e-5),  # Lower LR for fine-tun
 model.fit(train_generator, epochs=5, validation_data=val_generator)
 
 
-model.save("mobilenetv3_fish_classifier.h5")
+model.save("mobilenetv3_fish_classifier1.h5")
